@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  chatgpt-next-web:
+    profiles: ["no-proxy"]
+    container_name: gemini-next-web
+    image: blacksev/gemini-next-web
+    ports:
+      - 3000:3000
+    environment:
+      - CODE=$CODE
+      - BASE_URL=$BASE_URL
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=$DISABLE_GPT4
+      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+      - OPENAI_SB=$OPENAI_SB
+
+  chatgpt-next-web-proxy:
+    profiles: ["proxy"]
+    container_name: gemini-next-web-proxy
+    image: blacksev/gemini-next-web
+    ports:
+      - 3000:3000
+    environment:
+      - CODE=$CODE
+      - PROXY_URL=$PROXY_URL
+      - BASE_URL=$BASE_URL
+      - OPENAI_ORG_ID=$OPENAI_ORG_ID
+      - HIDE_USER_API_KEY=$HIDE_USER_API_KEY
+      - DISABLE_GPT4=$DISABLE_GPT4
+      - ENABLE_BALANCE_QUERY=$ENABLE_BALANCE_QUERY
+      - DISABLE_FAST_LINK=$DISABLE_FAST_LINK
+      - OPENAI_SB=$OPENAI_SB
